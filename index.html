@@ -5,7 +5,6 @@
 </head>
 <body>
     <!-- content -->
-    <div class="wrapper">
 
 <section id="container" class="container">
     <div id="result_strip">
@@ -25,8 +24,7 @@ var code;
 Quagga.init({
     inputStream : {
       name : "Live",
-      type : "LiveStream",
-      target: document.querySelector('#yourElement')
+      type : "LiveStream"
     },
     decoder : {
       readers : ["ean_reader"]
@@ -52,7 +50,7 @@ Quagga.init({
             $node.find("h4.code").html(code);
             $("#result_strip ul.thumbnails").prepend($node);
             Quagga.stop();
-            document.getElementById('interactive').style.display = 'none';
+            //document.getElementById('interactive').style.display = 'none';
         }
     });
 
