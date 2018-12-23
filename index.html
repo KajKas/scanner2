@@ -75,9 +75,10 @@
             Quagga.lastResult = code;
             var $node = null, canvas = Quagga.canvas.dom.image;
 
-            $node = $('<h4 class="code"></h4>');
+            $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+            $node.find("img").attr("src", canvas.toDataURL());
             $node.find("h4.code").html(code);
-            $("#result_strip h4.code").prepend($node);
+            $("#result_strip ul.thumbnails").prepend($node);
         }
     });
 });
