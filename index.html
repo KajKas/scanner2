@@ -44,13 +44,6 @@
         Quagga.start();
     });
 
-    Quagga.onProcessed(function(result) {
-        var drawingCtx = Quagga.canvas.ctx.overlay,
-            drawingCanvas = Quagga.canvas.dom.overlay;
-
-        
-    });
-
     Quagga.onDetected(function(result) {
         code = result.codeResult.code;
 
