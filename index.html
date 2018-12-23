@@ -5,19 +5,13 @@
 </head>
 <body>
     <!-- content -->
-    <div class="wrapper">
 
-<section id="container" class="container">
-    <div class="controls">
-        <fieldset class="input-group">
-            <button class="stop">Stop</button>
-        </fieldset>
-    </div>
-    <div id="result_strip">
-        <ul class="thumbnails"></ul>
-    </div>
-    <div id="interactive" class="viewport"></div>
-</section>
+    <section id="container" class="container">
+        <div id="result_strip">
+            <ul class="thumbnails"></ul>
+        </div>
+        <div id="interactive" class="viewport"></div>
+    </section>
 
     <!-- dependencies -->
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -29,36 +23,36 @@
     var code;
     $(function() {
         Quagga.init({
-        inputStream : {
-        name : "Live",
-        type : "LiveStream"
-        },
-        decoder : {
-        readers : ["ean_reader"]
-        }
-    }, function(err) {
-        if (err) {
-            console.log(err);
-            return
-        }
-        Quagga.start();
+            inputStream : {
+            name : "Live",
+            type : "LiveStream"
+            },
+            decoder : {
+            readers : ["ean_reader"]
+            }
+        }, function(err) {
+            if (err) {
+                console.log(err);
+                return
+            }
+            Quagga.start();
+        });
+
+        Quagga.onDetected(function(result) {
+            code = result.codeResult.code;
+
+            if (Quagga.lastResult !== code) {
+                Quagga.lastResult = code;
+                var $node = null, canvas = Quagga.canvas.dom.image;
+
+                $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+                $node.find("img").attr("src", canvas.toDataURL());
+                $node.find("h4.code").html(code);
+                $("#result_strip ul.thumbnails").prepend($node);
+                Quagga.stop();
+            }
+        });
     });
-
-    Quagga.onDetected(function(result) {
-        code = result.codeResult.code;
-
-        if (Quagga.lastResult !== code) {
-            Quagga.lastResult = code;
-            var $node = null, canvas = Quagga.canvas.dom.image;
-
-            $node = $('<li><div class="thumbnail"><div class="imgWrapper"></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-            $node.find("img").attr("src", canvas.toDataURL());
-            $node.find("h4.code").html(code);
-            $("#result_strip ul.thumbnails").prepend($node);
-            Quagga.stop();
-        }
-    });
-});
     </script>
 </body>
 </html>
