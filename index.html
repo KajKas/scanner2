@@ -28,7 +28,7 @@
 
 var code;
 $(function() {
-    App.init({
+    Quagga.init({
     inputStream : {
       name : "Live",
       type : "LiveStream",
@@ -73,8 +73,8 @@ $(function() {
     Quagga.onDetected(function(result) {
         code = result.codeResult.code;
 
-        if (App.lastResult !== code) {
-            App.lastResult = code;
+        if (Quagga.lastResult !== code) {
+            Quagga.lastResult = code;
             var $node = null, canvas = Quagga.canvas.dom.image;
 
             $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
