@@ -26,25 +26,23 @@
     <!-- code -->
     <script type="text/javascript">
 
-var code;
-$(function() {
-    Quagga.init({
-    inputStream : {
-      name : "Live",
-      type : "LiveStream",
-      target: document.querySelector('#yourElement')
-    },
-    decoder : {
-      readers : ["ean_reader"]
-    }
-  }, function(err) {
-      if (err) {
-          console.log(err);
-          return
-      }
-      console.log("Initialization finished. Ready to start");
-      Quagga.start();
-  });
+    var code;
+    $(function() {
+        Quagga.init({
+        inputStream : {
+        name : "Live",
+        type : "LiveStream"
+        },
+        decoder : {
+        readers : ["ean_reader"]
+        }
+    }, function(err) {
+        if (err) {
+            console.log(err);
+            return
+        }
+        Quagga.start();
+    });
 
     Quagga.onProcessed(function(result) {
         var drawingCtx = Quagga.canvas.ctx.overlay,
@@ -77,10 +75,9 @@ $(function() {
             Quagga.lastResult = code;
             var $node = null, canvas = Quagga.canvas.dom.image;
 
-            $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-            $node.find("img").attr("src", canvas.toDataURL());
+            $node = $('<h4 class="code"></h4>');
             $node.find("h4.code").html(code);
-            $("#result_strip ul.thumbnails").prepend($node);
+            $("#result_strip h4.code").prepend($node);
         }
     });
 });
