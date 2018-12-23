@@ -8,11 +8,6 @@
     <div class="wrapper">
 
 <section id="container" class="container">
-    <div class="controls">
-        <fieldset class="input-group">
-            <button class="stop">Stop</button>
-        </fieldset>
-    </div>
     <div id="result_strip">
         <ul class="thumbnails"></ul>
     </div>
@@ -52,7 +47,7 @@ Quagga.init({
             Quagga.lastResult = code;
             var $node = null, canvas = Quagga.canvas.dom.image;
 
-            $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+            $node = $('<div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div>');
             $node.find("img").attr("src", canvas.toDataURL());
             $node.find("h4.code").html(code);
             $("#result_strip ul.thumbnails").prepend($node);
