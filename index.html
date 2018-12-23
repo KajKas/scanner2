@@ -52,7 +52,7 @@ Quagga.init({
             $node.find("h4.code").html(code);
             $("#result_strip ul.thumbnails").prepend($node);
             Quagga.stop();
-            canvas.css("display","none");
+            document.getElementById('interactive').style.display = 'none';
         }
     });
 
