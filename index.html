@@ -4,8 +4,19 @@
 </head>
 <body>
     <!-- content -->
-    <button onclick="scanBarcode()">Zaloguj pracownika</button>
-    <input id="employee-id" type="text"/>
+    <form>
+        <div>
+            <label>pracownik</label>
+            <input id="employee-id" type="text"/>
+            <button onclick="scanBarcode()">Zaloguj pracownika</button>
+        </div>
+        <div>
+            <label>salon</label>
+            <input id="salon-id" type="text"/>
+            <button>Zaloguj salon</button>
+        </div>
+    </form>
+
     <section id="container" class="container">
         <div id="result_strip">
             <ul class="thumbnails"></ul>
@@ -45,10 +56,8 @@
                     if (Quagga.lastResult !== code) {
                         Quagga.lastResult = code;
                         var $node = null, canvas = Quagga.canvas.dom.image;
-
                         $node = $('<div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div>');
                         $node.find("img").attr("src", canvas.toDataURL());
-                        $node.find("h4.code").html(code);
                         $("#result_strip ul.thumbnails").prepend($node);
                         Quagga.stop();
                         document.getElementById('interactive').style.display = 'none';
