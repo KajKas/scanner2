@@ -72,14 +72,16 @@
                     }
                 });
             employeeButton.remove();
-            changeEmployee.remove();
-            var changeEmployee = document.createElement("A");
+            changeEmployee.remove().then(function() {
+                var changeEmployee = document.createElement("A");
             var changeEmployeeText = document.createTextNode("zmień");
             changeEmployee.setAttribute('class', 'change-employee');
             changeEmployee.setAttribute('href', 'javascript:void(0);');
             changeEmployee.setAttribute('onclick', 'scanBarcode()');
             changeEmployee.append(changeEmployeeText);
             employeeFormField.append(changeEmployee);
+            })
+            
         }
     </script>
 </body>
