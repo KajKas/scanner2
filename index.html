@@ -75,6 +75,8 @@
             var changeEmployee = document.createElement("A");
             var changeEmployeeText = document.createTextNode("zmień");
             changeEmployee.setAttribute('class', 'change-employee');
+            changeEmployee.setAttribute('href', 'javascript:void(0);');
+            changeEmployee.setAttribute('onclick', 'scanBarcode()');
             changeEmployee.append(changeEmployeeText);
             employeeFormField.append(changeEmployee);
         }
