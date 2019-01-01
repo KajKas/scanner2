@@ -5,15 +5,15 @@
 <body>
     <!-- content -->
     <form>
-        <div>
+        <div id="employee_form-field">
             <label>pracownik</label>
             <input id="employee-id" type="text"/>
-            <a href="javascript:void(0);" onclick="scanBarcode()">Zaloguj pracownika</a>
+            <a id="employee-button" href="javascript:void(0);" onclick="scanBarcode()">Zaloguj pracownika</a>
         </div>
-        <div>
+        <div id="salon_form-field">
             <label>salon</label>
             <input id="salon-id" type="text"/>
-            <a href="javascript:void(0);">Zaloguj salon</a>
+            <a id="salon-button" href="javascript:void(0);">Zaloguj salon</a>
         </div>
     </form>
 
@@ -30,9 +30,16 @@
 
     <!-- code -->
     <script type="text/javascript">
-        var employeeId = document.getElementById('employee-id');
+
         var code;
-        function scanBarcode() {        
+        var employeeId = document.getElementById('employee-id');
+        var salonId = document.getElementById('salon-id');
+        var employeeButton = document.getElementById('employee-button');
+        var salonButton = document.getElementById('salon-button');
+        var employeeFormField = document.getElementById('employee_form-field')
+        var salonFormField = document.getElementById('salon_form-field')
+
+        function scanBarcode() {
             Quagga.init({
                 inputStream : {
                 name : "Live",
@@ -64,6 +71,11 @@
                         employeeId.value = code;
                     }
                 });
+            employeeButton.remove();
+            var changeEmployee = document.createElement("A");
+            var changeEmployeeText = document.createTextNode("zmień");
+            changeEmployee.append(changeEmployeeText);
+            employeeFormField.append(changeEmployee);
         }
     </script>
 </body>
