@@ -13,7 +13,7 @@
         <div id="salon_form-field">
             <label>salon</label>
             <input id="salon-id" type="text"/>
-            <a id="salon-button" href="javascript:void(0);">Zaloguj salon</a>
+            <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zaloguj salon</a>
         </div>
     </form>
 
@@ -90,6 +90,19 @@
             document.getElementById('thumbnail').remove();
             document.getElementById('interactive').style.display = 'block';
             scanBarcode();
+        }
+
+        function logSalon() {
+            salonButton.remove();
+            var changeSalon = document.createElement("A");
+            var changeSalonText = document.createTextNode("zmień");
+            changeSalon.setAttribute('id', 'change-salon');
+            changeSalon.setAttribute('class', 'change-salon');
+            changeSalon.setAttribute('href', 'javascript:void(0);');
+            changeSalon.setAttribute('onclick', 'changeSalon()');
+            changeSalon.append(changeSalonText);
+            salonFormField.append(changeSalon);
+            salonId.setAttribute('disabled');
         }
     </script>
 </body>
