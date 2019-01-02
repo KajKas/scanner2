@@ -72,6 +72,7 @@
                     }
                 });
             employeeButton.remove();
+            employeeId.setAttribute('disabled', true);
             if (changeEmployee==undefined) {
                 var changeEmployee = document.createElement("A");
                 var changeEmployeeText = document.createTextNode("zmień");
@@ -85,6 +86,7 @@
         }
 
         function changeBarcode() {
+            employeeId.removeAttribute('disabled');
             document.getElementById('change-employee').remove();
             document.getElementById('thumbnail').remove();
             document.getElementById('interactive').style.display = 'block';
@@ -116,7 +118,7 @@
             salonButton.append(salonButtonText);
             salonFormField.append(salonButton);
         }
-        
+
     </script>
 </body>
 </html>
