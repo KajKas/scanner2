@@ -76,6 +76,7 @@
             if (changeEmployee==undefined) {
                 var changeEmployee = document.createElement("A");
                 var changeEmployeeText = document.createTextNode("zmień");
+                changeEmployee.setAttribute('id', 'change-employee');
                 changeEmployee.setAttribute('class', 'change-employee');
                 changeEmployee.setAttribute('href', 'javascript:void(0);');
                 changeEmployee.setAttribute('onclick', 'changeBarcode()');
@@ -85,6 +86,7 @@
         }
 
         function changeBarcode() {
+            document.getElementById('change-employee').remove();
             document.getElementById('thumbnail').remove();
             document.getElementById('interactive').style.display = 'block';
             scanBarcode();
