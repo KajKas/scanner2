@@ -63,7 +63,7 @@
                     if (Quagga.lastResult !== code) {
                         Quagga.lastResult = code;
                         var $node = null, canvas = Quagga.canvas.dom.image;
-                        $node = $('<div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div>');
+                        $node = $('<div class="thumbnail" id="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div>');
                         $node.find("img").attr("src", canvas.toDataURL());
                         $("#result_strip ul.thumbnails").prepend($node);
                         Quagga.stop();
@@ -83,10 +83,11 @@
         }
 
         function changeBarcode() {
+            document.getElementById('thumbnail').remove();
+            document.getElementById('changeEmployee').remove();
             document.getElementById('interactive').style.display = 'block';
             scanBarcode();
         }
-        
     </script>
 </body>
 </html>
