@@ -58,8 +58,8 @@
             });
 
                 Quagga.onDetected(function(result) {
+                    employeeId.setAttribute('disabled', true);
                     code = result.codeResult.code;
-
                     if (Quagga.lastResult !== code) {
                         Quagga.lastResult = code;
                         var $node = null, canvas = Quagga.canvas.dom.image;
@@ -71,8 +71,7 @@
                         employeeId.value = code;
                     }
                 });
-            employeeButton.remove();
-            employeeId.setAttribute('disabled', true);
+            employeeButton.remove();            
             if (changeEmployee==undefined) {
                 var changeEmployee = document.createElement("A");
                 var changeEmployeeText = document.createTextNode("zmień");
