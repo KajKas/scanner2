@@ -73,7 +73,7 @@
                 });
             employeeButton.remove();
             //changeEmployee.remove();
-            if (!changeEmployee) {
+            if (changeEmployee==undefined) {
                 var changeEmployee = document.createElement("A");
                 var changeEmployeeText = document.createTextNode("zmień");
                 changeEmployee.setAttribute('class', 'change-employee');
