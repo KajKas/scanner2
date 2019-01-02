@@ -13,7 +13,7 @@
         <div id="salon_form-field">
             <label>salon</label>
             <input id="salon-id" type="text"/>
-            <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zaloguj salon</a>
+            <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zapisz</a>
         </div>
     </form>
 
@@ -93,7 +93,7 @@
         }
 
         function logSalon() {
-            salonButton.remove();
+            document.getElementById('salon-button').remove();
             var changeSalon = document.createElement("A");
             var changeSalonText = document.createTextNode("zmień");
             changeSalon.setAttribute('id', 'change-salon');
@@ -103,6 +103,20 @@
             changeSalon.append(changeSalonText);
             salonFormField.append(changeSalon);
             salonId.setAttribute('disabled', true);
+        }
+
+        function changeSalon() {
+            salonId.setAttribute('disabled', false);
+            document.getElementById('change-salon').remove();
+
+            var salonButton = document.createElement("A");
+            var salonButtonText = document.createTextNode("Zapisz");
+            changeSalon.setAttribute('id', 'salon-button');
+            salonButton.setAttribute('class', 'salon-button');
+            salonButton.setAttribute('href', 'javascript:void(0);');
+            salonButton.setAttribute('onclick', 'logSalon()');
+            salonButton.append(salonButtonText);
+            salonFormField.append(salonButton);
         }
     </script>
 </body>
