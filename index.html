@@ -72,7 +72,6 @@
                     }
                 });
             employeeButton.remove();
-            //changeEmployee.remove();
             if (changeEmployee==undefined) {
                 var changeEmployee = document.createElement("A");
                 var changeEmployeeText = document.createTextNode("zmień");
@@ -106,9 +105,8 @@
         }
 
         function changeSalon() {
-            salonId.setAttribute('disabled', false);
+            salonId.removeAttribute('disabled')
             document.getElementById('change-salon').remove();
-
             var salonButton = document.createElement("A");
             var salonButtonText = document.createTextNode("Zapisz");
             salonButton.setAttribute('id', 'salon-button');
@@ -118,6 +116,7 @@
             salonButton.append(salonButtonText);
             salonFormField.append(salonButton);
         }
+        
     </script>
 </body>
 </html>
