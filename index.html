@@ -105,10 +105,10 @@
             changeSalon.append(changeSalonText);
             salonFormField.append(changeSalon);
             salonIdSpan.innerHTML = salonIdInput.value;
+            salonIdInput.style.display = 'none';
         }
 
         function changeSalon() {
-            salonId.removeAttribute('disabled')
             document.getElementById('change-salon').remove();
             var salonButton = document.createElement("A");
             var salonButtonText = document.createTextNode("Zapisz");
@@ -118,6 +118,7 @@
             salonButton.setAttribute('onclick', 'logSalon()');
             salonButton.append(salonButtonText);
             salonFormField.append(salonButton);
+            salonIdInput.style.display = 'inline-block';
         }
 
     </script>
