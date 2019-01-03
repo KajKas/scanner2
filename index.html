@@ -7,12 +7,12 @@
     <form>
         <div id="employee_form-field">
             <label>pracownik</label>
-            <input id="employee-id" type="text"/><span id="employee-id_span"></span>
+            <span id="employee-id_span"></span>
             <a id="employee-button" href="javascript:void(0);" onclick="scanBarcode()">Zaloguj pracownika</a>
         </div>
         <div id="salon_form-field">
             <label>salon</label>
-            <input id="salon-id" type="text"/><span id="salon-id_span"></span>
+            <input id="salon-id_input" type="text"/><span id="salon-id_span"></span>
             <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zapisz</a>
         </div>
     </form>
@@ -32,9 +32,8 @@
     <script type="text/javascript">
 
         var code;
-        var employeeId = document.getElementById('employee-id');
         var employeeIdSpan = document.getElementById('employee-id_span');
-        var salonId = document.getElementById('salon-id');
+        var salonIdInput = document.getElementById('salon-id_input');
         var salonIdSpan = document.getElementById('salon-id_span');
         var employeeButton = document.getElementById('employee-button');
         var salonButton = document.getElementById('salon-button');
@@ -105,7 +104,7 @@
             changeSalon.setAttribute('onclick', 'changeSalon()');
             changeSalon.append(changeSalonText);
             salonFormField.append(changeSalon);
-            salonId.setAttribute('disabled', true);
+            salonIdSpan.innerHTML = salonIdInput.value;
         }
 
         function changeSalon() {
