@@ -59,7 +59,6 @@
             });
 
                 Quagga.onDetected(function(result) {
-                    employeeId.setAttribute('disabled', true);
                     code = result.codeResult.code;
                     if (Quagga.lastResult !== code) {
                         Quagga.lastResult = code;
