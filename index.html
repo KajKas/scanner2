@@ -13,7 +13,7 @@
         <div id="salon_form-field">
             <label>salon</label>
             <input id="salon-id_input" type="text" style="display:none"/><span id="salon-id_span"></span>
-            <a id="salon-button" href="javascript:void(0);" onclick="changeSalon()">Zaloguj salon</a>
+            <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zaloguj salon</a>
         </div>
     </form>
 
@@ -95,6 +95,12 @@
         }
 
         function logSalon() {
+            salonIdInput.style.display = 'inline-block';
+            document.getElementById('salon-button').innerHTML = "Zapisz";
+            document.getElementById('salon-button').setAttribute('onclick', 'saveSalon()');
+        }
+
+        function saveSalon() {
             document.getElementById('salon-button').remove();
             var changeSalon = document.createElement("A");
             var changeSalonText = document.createTextNode("zmień");
