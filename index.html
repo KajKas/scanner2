@@ -7,12 +7,12 @@
     <form>
         <div id="employee_form-field">
             <label>pracownik</label>
-            <input id="employee-id" type="text"/>
+            <input id="employee-id" type="text"/><span id="employee-id_span"></span>
             <a id="employee-button" href="javascript:void(0);" onclick="scanBarcode()">Zaloguj pracownika</a>
         </div>
         <div id="salon_form-field">
             <label>salon</label>
-            <input id="salon-id" type="text"/>
+            <input id="salon-id" type="text"/><span id="salon-id_span"></span>
             <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zapisz</a>
         </div>
     </form>
@@ -33,7 +33,9 @@
 
         var code;
         var employeeId = document.getElementById('employee-id');
+        var employeeIdSpan = document.getElementById('employee-id_span');
         var salonId = document.getElementById('salon-id');
+        var salonIdSpan = document.getElementById('salon-id_span');
         var employeeButton = document.getElementById('employee-button');
         var salonButton = document.getElementById('salon-button');
         var employeeFormField = document.getElementById('employee_form-field')
@@ -68,6 +70,7 @@
                         $("#result_strip ul.thumbnails").prepend($node);
                         Quagga.stop();
                         document.getElementById('interactive').style.display = 'none';
+                        employeeIdSpan.innerHTML = code;
                         employeeId.value = code;
                     }
                 });
@@ -80,7 +83,7 @@
                 changeEmployee.setAttribute('href', 'javascript:void(0);');
                 changeEmployee.setAttribute('onclick', 'changeBarcode()');
                 changeEmployee.append(changeEmployeeText);
-                employeeFormField.append(changeEmployee);
+                employeeFormField.append(changeEmployee);                
             }
         }
 
