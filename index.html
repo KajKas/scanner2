@@ -110,7 +110,7 @@
             changeSalon.setAttribute('onclick', 'changeSalon()');
             changeSalon.append(changeSalonText);
             salonFormField.append(changeSalon);
-            salon = salonIdSpan.innerHTML;
+            salon = salonIdInput.value;
             salonIdSpan.innerHTML = salonIdInput.value;
             salonIdInput.style.display = 'none';
             Cookies.set('salon', salon);
@@ -128,7 +128,6 @@
             salonFormField.append(salonButton);
             salonIdInput.style.display = 'inline-block';
             salonIdSpan.innerHTML = '';
-            Cookies.remove('salon');
         }
 
     </script>
