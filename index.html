@@ -33,6 +33,7 @@
     <script type="text/javascript">
 
         var code;
+        var salon;
         var employeeIdSpan = document.getElementById('employee-id_span');
         var salonIdInput = document.getElementById('salon-id_input');
         var salonIdSpan = document.getElementById('salon-id_span');
@@ -109,9 +110,10 @@
             changeSalon.setAttribute('onclick', 'changeSalon()');
             changeSalon.append(changeSalonText);
             salonFormField.append(changeSalon);
+            salon = salonIdSpan.innerHTML;
             salonIdSpan.innerHTML = salonIdInput.value;
             salonIdInput.style.display = 'none';
-            Cookies.set('salon', salonIdInput.value);
+            Cookies.set('salon', salon);
         }
 
         function changeSalon() {
