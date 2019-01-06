@@ -104,8 +104,8 @@
 
         function changeBarcode() {
             document.getElementById('change-employee').remove();
-            document.getElementById('thumbnail').remove();
-            document.getElementById('interactive').style.display = 'block';
+            if (document.getElementById('thumbnail')) {document.getElementById('thumbnail').remove();}
+            if (document.getElementById('interactive')) {document.getElementById('interactive').style.display = 'block';}            
             scanBarcode();
             Cookies.remove('user');
         }
