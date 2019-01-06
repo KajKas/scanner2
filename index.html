@@ -55,6 +55,19 @@
                 changeEmployee.append(changeEmployeeText);
                 employeeFormField.append(changeEmployee);
             }
+            if (Cookies.get('salon')) {
+                salonIdSpan.innerHTML = Cookies.get('salon');
+                document.getElementById('salon-button').remove();
+                var changeSalon = document.createElement("A");
+                var changeSalonText = document.createTextNode("zmień");
+                changeSalon.setAttribute('id', 'change-salon');
+                changeSalon.setAttribute('class', 'change-salon');
+                changeSalon.setAttribute('href', 'javascript:void(0);');
+                changeSalon.setAttribute('onclick', 'changeSalon()');
+                changeSalon.append(changeSalonText);
+                salonFormField.append(changeSalon);                
+                salonIdInput.style.display = 'none';
+            } 
         }
 
         function scanBarcode() {
