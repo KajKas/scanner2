@@ -54,6 +54,8 @@
                 changeEmployee.setAttribute('onclick', 'changeBarcode()');
                 changeEmployee.append(changeEmployeeText);
                 employeeFormField.append(changeEmployee);
+            } else {
+                employeeIdSpan.innerHTML = "Niezalogowany";
             }
             if (Cookies.get('salon')) {
                 salonIdSpan.innerHTML = Cookies.get('salon');
@@ -67,7 +69,9 @@
                 changeSalon.append(changeSalonText);
                 salonFormField.append(changeSalon);                
                 salonIdInput.style.display = 'none';
-            } 
+            } else {
+                salonIdSpan.innerHTML = "Niezalogowany";
+            }
         }
 
         function scanBarcode() {
