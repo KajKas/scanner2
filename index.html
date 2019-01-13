@@ -6,12 +6,12 @@
     <!-- content -->
     <form>
         <div id="employee_form-field">
-            <label>pracownik</label>
+            <label id="user-label">pracownik</label>
             <span id="employee-id_span"></span>
             <a id="employee-button" href="javascript:void(0);" onclick="scanBarcode()">Zaloguj pracownika</a>
         </div>
         <div id="salon_form-field">
-            <label>salon</label>
+            <label id="salon-label">salon</label>
             <input id="salon-id_input" type="number" style="display:none"/><span id="salon-id_span"></span>
             <a id="salon-button" href="javascript:void(0);" onclick="logSalon()">Zaloguj salon</a>
         </div>
@@ -41,6 +41,8 @@
         var salonButton = document.getElementById('salon-button');
         var employeeFormField = document.getElementById('employee_form-field')
         var salonFormField = document.getElementById('salon_form-field')
+        var userLabel = document.getElementById('user-label')
+        var salonLabel = document.getElementById('salon-label')
 
         function checkCookies() {
             if (Cookies.get('user')) {
@@ -75,6 +77,7 @@
         }
 
         function scanBarcode() {
+            employeeIdSpan.innerHTML = "";
             Quagga.init({
                 inputStream : {
                 name : "Live",
@@ -93,13 +96,14 @@
             });
 
                 Quagga.onDetected(function(result) {
+                    //document.getElementById('result_strip').style.display = 'none';
                     code = result.codeResult.code;
                     if (Quagga.lastResult !== code) {
                         Quagga.lastResult = code;
                         var $node = null, canvas = Quagga.canvas.dom.image;
-                        $node = $('<div class="thumbnail" id="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div>');
-                        $node.find("img").attr("src", canvas.toDataURL());
-                        $("#result_strip ul.thumbnails").prepend($node);
+                        //$node = $('<div class="thumbnail" id="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div>');
+                        //$node.find("img").attr("src", canvas.toDataURL());
+                        //$("#result_strip ul.thumbnails").prepend($node);
                         Quagga.stop();
                         document.getElementById('interactive').style.display = 'none';
                         employeeIdSpan.innerHTML = code;
@@ -128,6 +132,7 @@
         }
 
         function logSalon() {
+            salonIdSpan.innerHTML = "";
             salonIdInput.style.display = 'inline-block';
             document.getElementById('salon-button').innerHTML = "Zapisz";
             document.getElementById('salon-button').setAttribute('onclick', 'saveSalon()');
